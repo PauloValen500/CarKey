@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Asegura la correcta adaptación al móvil -->
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+ 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de sesión</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Lora', serif;
+            background-image: url('img/fondoPrincipal.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .login-form {
+            background-color: rgba(255, 255, 255, 0.7);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .login-form h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .login-form label {
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+
+        .login-form input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        .login-form button {
+            padding: 12px;
+            background-color: #2f3235;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        .login-form button:hover {
+            background-color: #1f2123;
+        }
+
+        .error-message {
+            color: red;
+            text-align: center;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-form">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>CarKey</h2>
+
+            <form action="src/login.php" method="post"> 
+                <input type="text" id="username" name="username" placeholder="Usuario" required>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                <div class="inicio">
+                    <input type="submit" value="Iniciar Sesión">
+                    <button type="button" onclick="window.location.href='index.php'">Volver</button>
+                </div>
+               
+            </form>
+
+            
+        </div>
+    </div>
+
+    <script src="public/js/scripts.js">
+        document.querySelector('.inicio input[type="submit"]').addEventListener('click', function(event) {
+            event.preventDefault();  // Evita que el formulario se envíe inmediatamente
+            
+            const submitButton = event.target;
+            const carIcon = document.getElementById('carIcon'); // El auto que se moverá
+            
+            // Agrega la clase para iniciar la animación en el botón
+            submitButton.classList.add('clicked');
+            
+            // Muestra el auto y activa su animación de movimiento
+            carIcon.classList.add('show');
+            
+            // Después de la animación, puedes redirigir a la página de inicio de sesión o realizar otra acción
+            setTimeout(function() {
+                window.location.href = 'login.html';  // Redirigir a la página de inicio de sesión o a otra acción
+            }, 2000); // Espera que termine la animación antes de cambiar de página
+        });
+    </script>
+</body>
+</html>
