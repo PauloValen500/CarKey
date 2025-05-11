@@ -1,22 +1,18 @@
 <?php
 // Conexión a la base de datos
 $conn = new mysqli('localhost', 'root', '', 'carkey');
-
 // Verifica la conexión
 if ($conn->connect_error) {
     die("Conexión fallida: " . $conn->connect_error);
 }
-
 // Obtiene el ID del cliente a editar
 $idCliente = intval($_GET['id']);
-
 // Consulta los datos del cliente y de la persona
 $sql = "SELECT c.ID_Empleado, p.ID_Persona, p.Nombre, p.Primer_Apellido, p.Segundo_Apellido, p.Correo_Electronico, p.Telefono, c.RFC 
         FROM empleado c 
         JOIN persona p ON c.ID_Persona_Emp = p.ID_Persona
         WHERE c.ID_Empleado = $idCliente";
 $result = $conn->query($sql);
-
 if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     ?>
@@ -72,9 +68,7 @@ if ($result->num_rows > 0) {
             <label for="telefono">Teléfono:</label>
             <input type="text" id="telefono" name="telefono" value="<?php echo $row['Telefono']; ?>" required>
             <label for="RFC">RFC:</label>
-            <input type="text" id="RFC" name="RFC" value="<?php echo $row['RFC']; ?>" required>
-            
-            
+            <input type="text" id="RFC" name="RFC" value="<?php echo $row['RFC']; ?>" required>           
             <input type="submit" value="Actualizar Empleado">
         </form>
     </body>
@@ -83,7 +77,6 @@ if ($result->num_rows > 0) {
 } else {
     echo "No se encontró el empleado.";
 }
-
 // Cerrar conexión
 $conn->close();
 ?>
